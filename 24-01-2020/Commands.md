@@ -5,3 +5,5 @@ val maxSQL = spark.sql("""SELECT DEST_COUNTRY_NAME, sum(count) as destination_to
 * **Query Results**
 
 maxSQL.show()
+
+* Queries - *_Dataframe Syntax_*
