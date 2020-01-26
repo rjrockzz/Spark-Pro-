@@ -20,13 +20,14 @@ scala> val staticSchema = staticDataFrame.schema
 ```
 staticSchema: org.apache.spark.sql.types.StructType = StructType(StructField(InvoiceNo,StringType,true), StructField(StockCode,StringType,true), StructField(Description,StringType,true), StructField(Quantity,IntegerType,true), StructField(InvoiceDate,TimestampType,true), StructField(UnitPrice,DoubleType,true), StructField(CustomerID,DoubleType,true), StructField(Country,StringType,true))
 
-* **Grouping and Aggregating out time-series data**
+* **Grouping and Aggregating our time-series data**
 ```scala
 staticDataFrame
 .selectExpr("CustomerId","(UnitPrice * Quantity) as total_cost","InvoiceDate")
 .groupBy(col("CustomerId"),window(col("InvoiceDate"),"1 day"))
 .sum("total_cost")
 .show(5)
+```
 ```
 +----------+--------------------+-----------------+
 |CustomerId|              window|  sum(total_cost)|
@@ -38,4 +39,4 @@ staticDataFrame
 |   15608.0|[2011-11-11 05:30...|            122.4|
 +----------+--------------------+-----------------+
 only showing top 5 rows
-
+```
