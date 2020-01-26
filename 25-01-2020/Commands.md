@@ -1,5 +1,5 @@
 **Structured Streaming**
-<br>[dataset](https://github.com/rjrockzz/Spark-The-Definitive-Guide/tree/master/data/retail-data/by-day)
+<br>[Dataset](https://github.com/rjrockzz/Spark-The-Definitive-Guide/tree/master/data/retail-data/by-day)
 <br>
 *_[Window Function in Spark](https://databricks.com/blog/2015/07/15/introducing-window-functions-in-spark-sql.html)_*
 
@@ -42,3 +42,18 @@ staticDataFrame
 +----------+--------------------+-----------------+
 only showing top 5 rows
 ```
+* **Streaming at Business!**
+```scala
+val streaming = spark.readStream.schema(staticSchema)
+.option("maxFilesPerTrigger",1)
+.format("csv")
+.option("header","true")
+.load("C://Users//RJ//Desktop//scalala//data//retail-data//by-day//*.csv")
+```
+streaming: org.apache.spark.sql.DataFrame = [InvoiceNo: string, StockCode: string ... 6 more fields]
+
+* **Check Streaming status**
+```scala 
+streaming.isStreaming
+```
+res3: Boolean = true
