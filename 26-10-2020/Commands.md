@@ -3,8 +3,8 @@
 * **Case Class Scala**
 
 case class Flight(DEST_COUNTRY_NAME: String,
-     <br>| ORIGIN_COUNTRY_NAME: String,
-     <br>| count: BigInt)
+     <br> ORIGIN_COUNTRY_NAME: String,
+     <br> count: BigInt)
      
      defined class Flight
      
