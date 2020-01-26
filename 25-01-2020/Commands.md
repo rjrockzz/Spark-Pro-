@@ -2,6 +2,7 @@
 <br>[dataset](https://github.com/rjrockzz/Spark-The-Definitive-Guide/tree/master/data/retail-data/by-day)
 <br>
 *_[Window Function in Spark](https://databricks.com/blog/2015/07/15/introducing-window-functions-in-spark-sql.html)_*
+
 <br>* **Loading several CSVs at once**
 ```scala
  val staticDataFrame = spark.read.format("csv")
