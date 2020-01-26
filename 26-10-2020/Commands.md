@@ -3,8 +3,8 @@
 * **Case Class Scala**
 ```scala
 case class Flight(DEST_COUNTRY_NAME: String,
-     <br> ORIGIN_COUNTRY_NAME: String,
-     <br> count: BigInt)
+     ORIGIN_COUNTRY_NAME: String,
+     count: BigInt)
 ```     
      defined class Flight
      
@@ -22,6 +22,9 @@ flights: org.apache.spark.sql.Dataset[Flight] = [DEST_COUNTRY_NAME: string, ORIG
 
 * **Manipulations on Dataset file**
 ```scala
-scala> flights.filter(flight_row => flight_row.ORIGIN_COUNTRY_NAME != "Canada").map(flight_row => flight_row).take(5)
+scala> flights
+       .filter(flight_row => flight_row.ORIGIN_COUNTRY_NAME != "Canada")
+       .map(flight_row => flight_row)
+       .take(5)
 ```
 res0: Array[Flight] = Array(Flight(United States,Romania,1), Flight(United States,Ireland,264), Flight(United States,India,69), Flight(Egypt,United States,24), Flight(Equatorial Guinea,United States,1))
