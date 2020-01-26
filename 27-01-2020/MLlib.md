@@ -62,3 +62,13 @@ Vector.setInputCols(Array("UnitPrice","Quantity","day_of_week_encoded")).setOutp
 ```
 * **We’ll set this up into a pipeline so that any future data we need to transform can go through the exact same process**
 
+```scala
+scala> import org.apache.spark.ml.Pipeline
+import org.apache.spark.ml.Pipeline
+
+scala> val transPipeline = new Pipeline()
+transPipeline: org.apache.spark.ml.Pipeline = pipeline_cdd9f7c4b2c3
+
+scala> transPipeline.setStages(Array(indexer, encoder, Vector))
+res20: transPipeline.type = pipeline_cdd9f7c4b2c3
+```
