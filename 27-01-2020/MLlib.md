@@ -35,3 +35,12 @@ val train = preppedDataFrame.where("InvoiceDate < '2011-07-01'")
 val test = preppedDataFrame.where("InvoiceDate > '2011-07-01'")
 ```
 * **Turn our days of weeks into corresponding numerical values. For example, Spark might represent Saturday as 6, and Monday as 1.**
+```scala
+import org.apache.spark.ml.feature.StringIndexer
+
+val indexer = new StringIndexer()
+
+indexer.setInputCol("day_of_week").setOutputCol("day_of_week_index")
+```
+
+* **[OneHotEncoder](https://stackoverflow.com/questions/42295001/how-to-interpret-results-of-spark-onehotencoder)**
