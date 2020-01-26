@@ -34,3 +34,4 @@ val train = preppedDataFrame.where("InvoiceDate < '2011-07-01'")
 
 val test = preppedDataFrame.where("InvoiceDate > '2011-07-01'")
 ```
+* **Turn our days of weeks into corresponding numerical values. For example, Spark might represent Saturday as 6, and Monday as 1.**
