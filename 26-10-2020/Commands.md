@@ -3,16 +3,22 @@
 * **Case Class Scala**
 
 case class Flight(DEST_COUNTRY_NAME: String,
-     | ORIGIN_COUNTRY_NAME: String,
-     | count: BigInt)
+     <br>| ORIGIN_COUNTRY_NAME: String,
+     <br>| count: BigInt)
+     
+     defined class Flight
      
 * **Read as Parquet File**
 
 val flightsDF = spark.read.parquet("C://Users//RJ//Desktop//flight.parquet")
 
+flightsDF: org.apache.spark.sql.DataFrame = [DEST_COUNTRY_NAME: string, ORIGIN_COUNTRY_NAME: string ... 1 more field]
+
 * **Converting into Dataset File**
 
 val flights = flightsDF.as[Flight]
+
+flights: org.apache.spark.sql.Dataset[Flight] = [DEST_COUNTRY_NAME: string, ORIGIN_COUNTRY_NAME: string ... 1 more field]
 
 * **Manipulations on Dataset file**
 
