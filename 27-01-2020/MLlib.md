@@ -72,3 +72,6 @@ transPipeline: org.apache.spark.ml.Pipeline = pipeline_cdd9f7c4b2c3
 scala> transPipeline.setStages(Array(indexer, encoder, Vector))
 res20: transPipeline.type = pipeline_cdd9f7c4b2c3
 ```
+* **Preparing for training is a two-step process:**
+  * We first need to fit our transformers to this dataset.StringIndexer needs to know how many unique values there are to be indexed.       After those exist, encoding is easy but Spark must look at all the distinct values in the column to be indexed in order to store         those values later on
+
