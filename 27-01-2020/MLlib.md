@@ -49,4 +49,7 @@ import org.apache.spark.ml.feature.OneHotEncoder
 
 val encoder = new OneHotEncoder()
 
- encoder.setInputCol("day_of_week_index").setOutputCol("day_of_week_encoded")
+encoder.setInputCol("day_of_week_index").setOutputCol("day_of_week_encoded")
+```
+* **Each of these OneHotEncoder values will result in a set of columns that we will “assemble” into a vector. All machine learning algorithms in Spark take as input a Vector type, which must be a set of numerical value**
+
