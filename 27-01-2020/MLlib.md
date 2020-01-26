@@ -73,10 +73,44 @@ scala> transPipeline.setStages(Array(indexer, encoder, Vector))
 res20: transPipeline.type = pipeline_cdd9f7c4b2c3
 ```
 * **Preparing for training is a two-step process:**
+
   * We first need to fit our transformers to this dataset.StringIndexer needs to know how many unique values there are to be indexed.       After those exist, encoding is easy but Spark must look at all the distinct values in the column to be indexed in order to store         those values later on:
-  ```spark
+  
+  ```scala
   scala> val fitPipe = transPipeline.fit(train)
   fitPipe: org.apache.spark.ml.PipelineModel = pipeline_cdd9f7c4b2c3
   ```
+  
   * After we fit the training data, we are ready to take that fitted pipeline and use it to transform all of our data in a consistent       and repeatable way:
+    
+   ```scala
+   scala> val transTrain = fitPipe.transform(train)
+   transTrain: org.apache.spark.sql.DataFrame = [InvoiceNo: string, StockCode: string ... 10 more fields]
+   ```
 
+* **Finally Training the model!**
+
+```scala
+
+scala> import org.apache.spark.ml.clustering.KMeans
+import org.apache.spark.ml.clustering.KMeans
+
+scala> val kmeans = new KMeans()
+kmeans: org.apache.spark.ml.clustering.KMeans = kmeans_e3554ea52dd0
+
+scala> kmeans.setK(20).setSeed(1L)
+res22: kmeans.type = kmeans_e3554ea52dd0
+
+scala> val kmModel = kmeans.fit(transTrain)
+
+scala> kmModel.computeCost(transTrain)
+warning: there was one deprecation warning; re-run with -deprecation for details
+res23: Double = 8.455373996537484E7
+
+scala> val transTest = fitPipe.transform(test)
+transTest: org.apache.spark.sql.DataFrame = [InvoiceNo: string, StockCode: string ... 10 more fields]
+
+scala> kmModel.computeCost(transTest)
+warning: there was one deprecation warning; re-run with -deprecation for details
+res24: Double = 5.175070947222117E8
+```
