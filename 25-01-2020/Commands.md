@@ -1,7 +1,8 @@
 **Structured Streaming**
 <br>[dataset](https://github.com/rjrockzz/Spark-The-Definitive-Guide/tree/master/data/retail-data/by-day)
-
-* **Loading several CSVs at once**
+<br>
+*_ [Window Function is Spark] _*(https://databricks.com/blog/2015/07/15/introducing-window-functions-in-spark-sql.html)
+<br>* **Loading several CSVs at once**
 ```scala
  val staticDataFrame = spark.read.format("csv")
                        .option("header","true")
