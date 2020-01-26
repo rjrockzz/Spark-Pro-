@@ -3,8 +3,8 @@
 
 * **Loading several CSVs at once**
 ```scala
- val staticDataFrame = spark.read.format("csv").option("header","true").option("inferSchema","true").load("C://Use
-rs//RJ//Desktop//scalala//data//retail-data//by-day//*.csv")
+ val staticDataFrame = spark.read.format("csv").option("header","true")
+ .option("inferSchema","true").load("C://Users//RJ//Desktop//scalala//data//retail-data//by-day//*.csv")
 ```
 staticDataFrame: org.apache.spark.sql.DataFrame = [InvoiceNo: string, StockCode: string ... 6 more fields]
 
