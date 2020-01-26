@@ -1,4 +1,5 @@
 **Structured Streaming**
+[dataset](https://github.com/rjrockzz/Spark-The-Definitive-Guide/tree/master/data/retail-data/by-day)
 
 * **Loading several CSVs at once**
 
