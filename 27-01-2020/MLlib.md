@@ -12,3 +12,4 @@ val preppedDataFrame = staticDataFrame
                       .withColumn("day_of_week", date_format($"InvoiceDate", "EEEE"))  
                       .coalesce(5)
 ```
+preppedDataFrame: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [InvoiceNo: string, StockCode: string ... 7 more fields]
