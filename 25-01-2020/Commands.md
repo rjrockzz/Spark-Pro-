@@ -67,3 +67,13 @@ val purchasePerHour = streaming
 ```
 purchasePerHour: org.apache.spark.sql.DataFrame = [CustomerId: double, window: struct<start: timestamp, end: timestamp> ... 1 more field]
 
+* **In-Memory Concept**
+
+Streaming actions are a bit different from our conventional static action because we’re going to be populating data somewhere instead of just calling something like count (which doesn’t make any sense on a stream anyways). The action we will use will output to an in-memory table that we will update after each trigger. In this case, each trigger is based on an individual file (the read option that we set). Spark will mutate the data in the in-memory table such that we will always have the highest value as specified in our previous aggregation
+```scala
+purchasePerHour.writeStream
+.format("memory") //Storing in-memory table
+.queryName("customer") //name of in-memory table
+.outputMode("complete") //all counts in table
+.start()
+```
