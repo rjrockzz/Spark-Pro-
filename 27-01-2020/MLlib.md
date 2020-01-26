@@ -73,5 +73,10 @@ scala> transPipeline.setStages(Array(indexer, encoder, Vector))
 res20: transPipeline.type = pipeline_cdd9f7c4b2c3
 ```
 * **Preparing for training is a two-step process:**
-  * We first need to fit our transformers to this dataset.StringIndexer needs to know how many unique values there are to be indexed.       After those exist, encoding is easy but Spark must look at all the distinct values in the column to be indexed in order to store         those values later on
+  * We first need to fit our transformers to this dataset.StringIndexer needs to know how many unique values there are to be indexed.       After those exist, encoding is easy but Spark must look at all the distinct values in the column to be indexed in order to store         those values later on:
+  ```spark
+  scala> val fitPipe = transPipeline.fit(train)
+  fitPipe: org.apache.spark.ml.PipelineModel = pipeline_cdd9f7c4b2c3
+  ```
+  * After we fit the training data, we are ready to take that fitted pipeline and use it to transform all of our data in a consistent       and repeatable way:
 
