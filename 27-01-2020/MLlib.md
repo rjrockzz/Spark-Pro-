@@ -59,3 +59,6 @@ import org.apache.spark.ml.feature.VectorAssembler
 val Vector = new VectorAssembler()
 
 Vector.setInputCols(Array("UnitPrice","Quantity","day_of_week_encoded")).setOutputCol("features")
+```
+* **We’ll set this up into a pipeline so that any future data we need to transform can go through the exact same process**
+
