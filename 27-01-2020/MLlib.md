@@ -44,3 +44,9 @@ indexer.setInputCol("day_of_week").setOutputCol("day_of_week_index")
 ```
 
 * **[OneHotEncoder](https://stackoverflow.com/questions/42295001/how-to-interpret-results-of-spark-onehotencoder)**
+```scala
+import org.apache.spark.ml.feature.OneHotEncoder
+
+val encoder = new OneHotEncoder()
+
+ encoder.setInputCol("day_of_week_index").setOutputCol("day_of_week_encoded")
