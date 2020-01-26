@@ -57,3 +57,13 @@ streaming: org.apache.spark.sql.DataFrame = [InvoiceNo: string, StockCode: strin
 streaming.isStreaming
 ```
 res3: Boolean = true
+
+* **Previous DataFrame manipulation logic for summation in the process.**
+```scala
+val purchasePerHour = streaming
+.selectExpr("CustomerId","(UnitPrice * Quantity) as total_cost", "InvoiceDate")
+.groupBy($"CustomerId",window($"InvoiceDate","1 day"))
+.sum("total_cost")
+```
+purchasePerHour: org.apache.spark.sql.DataFrame = [CustomerId: double, window: struct<start: timestamp, end: timestamp> ... 1 more field]
+
