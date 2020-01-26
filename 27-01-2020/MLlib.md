@@ -27,3 +27,10 @@ scala> preppedDataFrame.show(5)
 +---------+---------+--------------------+--------+-------------------+---------+----------+--------------+-----------+
 only showing top 5 rows
 ```
+* **Splitting into testing and training datasets**
+
+```scala
+val train = preppedDataFrame.where("InvoiceDate < '2011-07-01'")
+
+val test = preppedDataFrame.where("InvoiceDate > '2011-07-01'")
+```
